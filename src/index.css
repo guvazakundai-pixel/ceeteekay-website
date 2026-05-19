@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  will-change: scroll-position;
 }
 
 body {
@@ -71,6 +72,74 @@ body {
 .nav-link:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.carousel-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.carousel-slide.entering {
+  opacity: 1;
+  z-index: 2;
+  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-slide.exiting {
+  opacity: 0;
+  z-index: 3;
+  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.furniture-card {
+  width: 100%;
+  background: transparent;
+  overflow: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.card-media-square {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.card-media-landscape {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 12px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

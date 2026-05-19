@@ -18,9 +18,9 @@ export default function CollectionSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 mt-16 sm:mt-20">
           {heroProducts.map((product, index) => (
             <FadeInOnScroll key={product.id} delay={index * 80} threshold={0.05}>
-              <div className="group cursor-pointer">
-                <div className={`relative h-80 sm:h-88 bg-gradient-to-br ${product.imageGradient} rounded-sm overflow-hidden mb-5 shadow-sm`}>
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/5 transition-colors duration-500">
+              <div className="furniture-card group cursor-pointer">
+                <div className={`relative bg-gradient-to-br ${product.imageGradient} rounded-sm overflow-hidden mb-5 shadow-sm card-media-landscape`}>
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/5 transition-colors duration-500 will-change-transform">
                     <div className="text-center px-6">
                       <div className="w-12 h-[1px] bg-ctk-600/30 mx-auto mb-4" />
                       <p className="text-sm text-ctk-700 italic font-light">{product.name}</p>
