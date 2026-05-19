@@ -1,5 +1,6 @@
 import ScrollProgress from './components/ScrollProgress';
 import Header from './components/Header';
+import IntroSummary from './components/IntroSummary';
 import HeroCarousel from './components/HeroCarousel';
 import CollectionSection from './components/CollectionSection';
 import FeaturedProjects from './components/FeaturedProjects';
@@ -16,9 +17,10 @@ import Footer from './components/Footer';
 
 export default function CeeteekayPremiumShowroom() {
   return (
-    <div className="bg-white">
+    <div className="bg-ctk-950">
       <ScrollProgress />
       <Header />
+      <IntroSummary />
       <HeroCarousel />
       <CollectionSection />
       <FeaturedProjects />
