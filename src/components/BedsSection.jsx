@@ -13,7 +13,7 @@ export default function BedsSection() {
     <section id="beds" className="bg-white py-28 sm:py-36">
       <div className="max-w-7xl mx-auto px-6">
         <FadeInOnScroll>
-          <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-4 block">Living Room</span>
+          <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-bold mb-4 block">Living Room</span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-light text-ctk-950 mb-5 leading-tight">
             Beds
           </h2>
@@ -45,11 +45,11 @@ export default function BedsSection() {
                   )}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                 </div>
-                <p className="text-[10px] text-ctk-400 uppercase tracking-[0.25em] mb-2 font-medium">Bedroom Furniture</p>
+                <p className="text-[10px] text-ctk-500 uppercase tracking-[0.25em] mb-2 font-bold">Bedroom Furniture</p>
                 <h3 className="text-xl sm:text-2xl font-serif font-light text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
                   {bed.name}
                 </h3>
-                <p className="text-sm text-ctk-500 font-light leading-relaxed mb-3">{bed.size} &middot; {bed.material}</p>
+                <p className="text-sm text-ctk-700 font-normal leading-relaxed mb-3">{bed.size} &middot; {bed.material}</p>
                 <p className="text-2xl sm:text-3xl font-serif font-light text-ctk-950">${bed.price.toLocaleString()}</p>
               </div>
             </FadeInOnScroll>
@@ -136,33 +136,33 @@ export default function BedsSection() {
                 </div>
 
                 <div className="p-6 sm:p-8 md:p-10 flex flex-col">
-                  <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-3">Bedroom Furniture</span>
+                  <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-semibold mb-3">Bedroom Furniture</span>
                   <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-2">{selectedBed.name}</h3>
                   <p className="text-3xl sm:text-4xl font-serif font-light text-ctk-950 mb-6">${selectedBed.price.toLocaleString()}</p>
 
                   <div className="space-y-4 mb-8">
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Size</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Size</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedBed.size}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Material</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Material</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedBed.material}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Frame</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Frame</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedBed.frame}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Headboard</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Headboard</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedBed.headboard}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Colour</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Colour</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedBed.color}</span>
                     </div>
                     <div className="py-2">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium block mb-2">Features</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold block mb-2">Features</span>
                       <p className="text-sm text-ctk-700 font-light">{selectedBed.features}</p>
                     </div>
                   </div>

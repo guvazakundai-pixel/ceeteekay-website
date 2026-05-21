@@ -44,6 +44,36 @@ body {
   overflow-x: hidden;
   width: 100%;
   color: var(--color-ctk-50);
+  line-height: 1.75;
+}
+
+/* Premium typography fixes */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+.bg-ctk-950 h2, .bg-ctk-900 h2, .bg-ctk-950 h3, .bg-ctk-900 h3 {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.bg-ctk-950 p, .bg-ctk-900 p {
+  color: rgba(255, 255, 255, 0.88) !important;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+}
+
+.bg-white h2, .bg-ctk-50 h2 {
+  color: #0a0a0a !important;
+  font-weight: 700 !important;
+}
+
+.bg-white p, .bg-ctk-50 p {
+  color: rgba(10, 10, 10, 0.82) !important;
+}
+
+.white-section-label {
+  color: rgba(10, 10, 10, 0.55);
 }
 
 ::-webkit-scrollbar { width: 4px; }

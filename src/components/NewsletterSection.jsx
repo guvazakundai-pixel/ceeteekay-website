@@ -5,9 +5,9 @@ export default function NewsletterSection() {
     <section className="bg-ctk-950 text-white py-20 sm:py-28">
       <div className="max-w-2xl mx-auto px-6 text-center">
         <FadeInOnScroll>
-          <span className="text-[10px] tracking-[0.3em] text-white/30 uppercase font-medium mb-4 block">Stay Connected</span>
+          <span className="text-[10px] tracking-[0.3em] text-white/65 uppercase font-medium mb-4 block">Stay Connected</span>
           <h3 className="text-3xl sm:text-4xl font-serif font-light mb-4 leading-tight">Stay Updated</h3>
-          <p className="text-sm sm:text-base text-white/50 font-light mb-8 leading-relaxed max-w-md mx-auto">
+          <p className="text-sm sm:text-base text-white/80 font-light mb-8 leading-relaxed max-w-md mx-auto">
             Subscribe to our newsletter for exclusive collections, design inspirations, and special offers.
           </p>
 

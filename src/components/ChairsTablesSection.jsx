@@ -33,7 +33,7 @@ export default function ChairsTablesSection() {
     <section id="chairs" className="bg-white py-28 sm:py-36">
       <div className="max-w-7xl mx-auto px-6">
         <FadeInOnScroll>
-          <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-4 block">Dining</span>
+          <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-bold mb-4 block">Dining</span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-light text-ctk-950 mb-5 leading-tight">
             Chairs & Tables
           </h2>
@@ -74,7 +74,7 @@ export default function ChairsTablesSection() {
               <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-3">
                 {group.label}
               </h3>
-              <p className="text-sm text-ctk-500 font-light max-w-xl leading-relaxed mb-10">
+              <p className="text-sm text-ctk-700 font-normal max-w-xl leading-relaxed mb-10">
                 {group.description}
               </p>
             </FadeInOnScroll>
@@ -102,11 +102,11 @@ export default function ChairsTablesSection() {
                       )}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                     </div>
-                    <p className="text-[10px] text-ctk-400 uppercase tracking-[0.25em] mb-2 font-medium">{item.category}</p>
+                    <p className="text-[10px] text-ctk-500 uppercase tracking-[0.25em] mb-2 font-bold">{item.category}</p>
                     <h3 className="text-xl sm:text-2xl font-serif font-light text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
                       {item.name}
                     </h3>
-                    <p className="text-sm text-ctk-500 font-light leading-relaxed mb-3">{item.colour}</p>
+                    <p className="text-sm text-ctk-700 font-normal leading-relaxed mb-3">{item.colour}</p>
                     <p className="text-2xl sm:text-3xl font-serif font-light text-ctk-950">${item.price.toLocaleString()}</p>
                   </div>
                 </FadeInOnScroll>
@@ -195,33 +195,33 @@ export default function ChairsTablesSection() {
                 </div>
 
                 <div className="p-6 sm:p-8 md:p-10 flex flex-col">
-                  <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-3">{selectedItem.category}</span>
+                  <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-semibold mb-3">{selectedItem.category}</span>
                   <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-2">{selectedItem.name}</h3>
                   <p className="text-3xl sm:text-4xl font-serif font-light text-ctk-950 mb-6">${selectedItem.price.toLocaleString()}</p>
 
                   <div className="space-y-4 mb-8">
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Dimensions</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Dimensions</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedItem.dimensions}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Material</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Material</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedItem.material}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Frame</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Frame</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedItem.frame}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">{selectedItem.category === 'Dining Table' || selectedItem.category === 'Coffee Table' || selectedItem.category === 'Console Table' || selectedItem.category === 'Side Table' ? 'Capacity' : 'Seat'}</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">{selectedItem.category === 'Dining Table' || selectedItem.category === 'Coffee Table' || selectedItem.category === 'Console Table' || selectedItem.category === 'Side Table' ? 'Capacity' : 'Seat'}</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedItem.seat}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-ctk-100">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Colour</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold">Colour</span>
                       <span className="text-sm text-ctk-700 font-light">{selectedItem.colour}</span>
                     </div>
                     <div className="py-2">
-                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium block mb-2">Features</span>
+                      <span className="text-xs tracking-[0.15em] text-ctk-500 uppercase font-semibold block mb-2">Features</span>
                       <p className="text-sm text-ctk-700 font-light">{selectedItem.features}</p>
                     </div>
                   </div>

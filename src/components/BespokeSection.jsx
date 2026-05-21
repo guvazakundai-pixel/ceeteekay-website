@@ -6,9 +6,9 @@ export default function BespokeSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <FadeInOnScroll>
-            <span className="text-[10px] tracking-[0.3em] text-white/30 uppercase font-medium mb-4 block">Bespoke</span>
+            <span className="text-[10px] tracking-[0.3em] text-white/65 uppercase font-medium mb-4 block">Bespoke</span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-light mb-6 leading-tight">Bespoke Customization</h2>
-            <p className="text-base sm:text-lg text-white/60 font-light leading-relaxed mb-8">
+            <p className="text-base sm:text-lg text-white/85 font-light leading-relaxed mb-8">
               Every space is unique. We offer fully bespoke customization services tailored to your vision, including custom
               dimensions, exclusive fabric selections, and architectural consultation.
             </p>
