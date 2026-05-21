@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="inline-block mb-4">
-              <img src="/logo.jpg" alt="CeeTeeKay Interiors" className="h-12 w-auto object-contain" />
+              <img src="/ctk-logo-transparent.png" alt="CeeTeeKay Interiors" className="h-10 w-auto object-contain" />
             </a>
             <p className="text-xs sm:text-sm font-light leading-relaxed text-ctk-500">
               Handcrafted luxury furniture from Harare, Zimbabwe.
