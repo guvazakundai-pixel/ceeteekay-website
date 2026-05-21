@@ -33,7 +33,7 @@ export default function ChairsTablesSection() {
     <section id="chairs" className="bg-white py-28 sm:py-36">
       <div className="max-w-7xl mx-auto px-6">
         <FadeInOnScroll>
-          <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-4 block">Chairs & Tables</span>
+          <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-4 block">Dining</span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-light text-ctk-950 mb-5 leading-tight">
             Chairs & Tables
           </h2>

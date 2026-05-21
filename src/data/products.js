@@ -63,3 +63,30 @@ export const heroProducts = [
     image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
   },
 ];
+
+export const showroomSections = [
+  {
+    id: 'living',
+    label: 'Living Room',
+    tagline: 'Sofas, accent chairs, coffee tables & TV stands — curated for comfort and style.',
+    items: [],
+  },
+  {
+    id: 'dining',
+    label: 'Dining',
+    tagline: 'Dining tables, chairs, and bar stools — designed for gathering.',
+    items: [],
+  },
+  {
+    id: 'bedroom',
+    label: 'Bedroom',
+    tagline: 'Beds, headboards, and side tables — serene luxury for restful nights.',
+    items: [],
+  },
+  {
+    id: 'decor',
+    label: 'Decor & Accessories',
+    tagline: 'Console tables, mirrors, lighting, and finishing touches.',
+    items: [],
+  },
+];

@@ -25,7 +25,7 @@ export default function TVStandsSection() {
     <section id="tvstands" className="bg-white py-28 sm:py-36">
       <div className="max-w-7xl mx-auto px-6">
         <FadeInOnScroll>
-          <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-4 block">TV Stands & Media Furniture</span>
+          <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-4 block">Living Room</span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-light text-ctk-950 mb-5 leading-tight">
             TV Stands
           </h2>
