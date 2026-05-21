@@ -12,7 +12,7 @@ export default function Header() {
       </div>
 
       <nav className="hidden md:flex items-center gap-10">
-        {['Collection', 'Projects', 'Services', 'Process', 'Contact'].map((item) => (
+        {['Beds', 'Collection', 'Projects', 'Services', 'Process', 'Contact'].map((item) => (
           <a
             key={item}
             href={`#${item.toLowerCase()}`}

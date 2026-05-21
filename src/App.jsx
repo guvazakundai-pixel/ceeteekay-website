@@ -2,6 +2,7 @@ import ScrollProgress from './components/ScrollProgress';
 import Header from './components/Header';
 import IntroSummary from './components/IntroSummary';
 import HeroCarousel from './components/HeroCarousel';
+import BedsSection from './components/BedsSection';
 import CollectionSection from './components/CollectionSection';
 import FeaturedProjects from './components/FeaturedProjects';
 import ServicesSection from './components/ServicesSection';
@@ -22,6 +23,7 @@ export default function CeeteekayPremiumShowroom() {
       <Header />
       <IntroSummary />
       <HeroCarousel />
+      <BedsSection />
       <CollectionSection />
       <FeaturedProjects />
       <ServicesSection />
