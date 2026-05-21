@@ -1,13 +1,33 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FadeInOnScroll from './FadeInOnScroll';
-import { chairs } from '../data/chairs';
+import { chairs, chairCategories } from '../data/chairs';
 
 const easing = [0.25, 0.46, 0.45, 0.94];
+
+const categoryMap = {
+  'dining-chairs': ['Dining Chair'],
+  'accent-chairs': ['Accent Chair'],
+  'lounge-chairs': ['Lounge Chair'],
+  'dining-tables': ['Dining Table'],
+  'occasional-tables': ['Coffee Table', 'Console Table', 'Side Table'],
+};
 
 export default function ChairsTablesSection() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  const groupedItems = useMemo(() => {
+    return chairCategories.map((cat) => ({
+      ...cat,
+      items: chairs.filter((item) => categoryMap[cat.key].includes(item.category)),
+    }));
+  }, []);
+
+  const displayCategories = activeCategory
+    ? groupedItems.filter((g) => g.key === activeCategory)
+    : groupedItems;
 
   return (
     <section id="chairs" className="bg-white py-28 sm:py-36">
@@ -22,39 +42,78 @@ export default function ChairsTablesSection() {
           </p>
         </FadeInOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mt-16 sm:mt-20">
-          {chairs.map((item, index) => (
-            <FadeInOnScroll key={item.id} delay={index * 50} threshold={0.05}>
-              <div
-                className="furniture-card group cursor-pointer"
-                onClick={() => { setSelectedItem(item); setActiveImage(0); }}
-              >
-                <div className="relative h-72 sm:h-80 bg-ctk-100 rounded-sm overflow-hidden mb-5 shadow-sm card-media-landscape">
-                  <img
-                    src={item.images[0]}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  {item.images.length > 1 && (
-                    <div className="absolute bottom-3 right-3 flex gap-1">
-                      {item.images.slice(0, 3).map((_, i) => (
-                        <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/80" />
-                      ))}
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-                </div>
-                <p className="text-[10px] text-ctk-400 uppercase tracking-[0.25em] mb-2 font-medium">{item.category}</p>
-                <h3 className="text-xl sm:text-2xl font-serif font-light text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
-                  {item.name}
-                </h3>
-                <p className="text-sm text-ctk-500 font-light leading-relaxed mb-3">{item.colour}</p>
-                <p className="text-2xl sm:text-3xl font-serif font-light text-ctk-950">${item.price.toLocaleString()}</p>
-              </div>
-            </FadeInOnScroll>
+        <div className="flex flex-wrap gap-2 mt-10">
+          <button
+            onClick={() => setActiveCategory(null)}
+            className={`px-4 py-2 text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 border rounded-sm ${
+              activeCategory === null
+                ? 'bg-ctk-950 text-white border-ctk-950'
+                : 'bg-white text-ctk-500 border-ctk-200 hover:border-ctk-950 hover:text-ctk-950'
+            }`}
+          >
+            All
+          </button>
+          {chairCategories.map((cat) => (
+            <button
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
+              className={`px-4 py-2 text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 border rounded-sm ${
+                activeCategory === cat.key
+                  ? 'bg-ctk-950 text-white border-ctk-950'
+                  : 'bg-white text-ctk-500 border-ctk-200 hover:border-ctk-950 hover:text-ctk-950'
+              }`}
+            >
+              {cat.label}
+            </button>
           ))}
         </div>
+
+        {displayCategories.map((group) => (
+          <div key={group.key} className="mt-16 sm:mt-20">
+            <FadeInOnScroll>
+              <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-3">
+                {group.label}
+              </h3>
+              <p className="text-sm text-ctk-500 font-light max-w-xl leading-relaxed mb-10">
+                {group.description}
+              </p>
+            </FadeInOnScroll>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {group.items.map((item, index) => (
+                <FadeInOnScroll key={item.id} delay={index * 50} threshold={0.05}>
+                  <div
+                    className="furniture-card group cursor-pointer"
+                    onClick={() => { setSelectedItem(item); setActiveImage(0); }}
+                  >
+                    <div className="relative h-72 sm:h-80 bg-ctk-100 rounded-sm overflow-hidden mb-5 shadow-sm card-media-landscape">
+                      <img
+                        src={item.images[0]}
+                        alt={item.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      {item.images.length > 1 && (
+                        <div className="absolute bottom-3 right-3 flex gap-1">
+                          {item.images.slice(0, 3).map((_, i) => (
+                            <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/80" />
+                          ))}
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                    </div>
+                    <p className="text-[10px] text-ctk-400 uppercase tracking-[0.25em] mb-2 font-medium">{item.category}</p>
+                    <h3 className="text-xl sm:text-2xl font-serif font-light text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
+                      {item.name}
+                    </h3>
+                    <p className="text-sm text-ctk-500 font-light leading-relaxed mb-3">{item.colour}</p>
+                    <p className="text-2xl sm:text-3xl font-serif font-light text-ctk-950">${item.price.toLocaleString()}</p>
+                  </div>
+                </FadeInOnScroll>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
       <AnimatePresence>
