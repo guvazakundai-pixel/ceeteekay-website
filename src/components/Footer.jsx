@@ -4,7 +4,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
-            <h4 className="text-white font-serif text-lg mb-4 tracking-tight">Ceeteekay</h4>
+            <a href="#" className="inline-block mb-4">
+              <img src="/logo.jpg" alt="CeeTeeKay Interiors" className="h-12 w-auto object-contain" />
+            </a>
             <p className="text-xs sm:text-sm font-light leading-relaxed text-ctk-500">
               Handcrafted luxury furniture from Harare, Zimbabwe.
             </p>

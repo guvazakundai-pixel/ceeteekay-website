@@ -2,14 +2,9 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 glass border-b border-white/10 px-6 py-4 flex justify-between items-center">
-      <div className="flex flex-col">
-        <a href="#" className="flex items-center gap-1">
-          <span className="text-white font-black text-2xl tracking-tight uppercase">
-            <span className="bg-white text-brand-blue px-1 rounded-sm">C</span>eeTeeKay
-          </span>
-        </a>
-        <span className="text-[10px] font-extrabold uppercase tracking-[5px] text-brand-orange -mt-0.5">Interiors</span>
-      </div>
+      <a href="#" className="flex items-center">
+        <img src="/logo.jpg" alt="CeeTeeKay Interiors" className="h-10 w-auto object-contain" />
+      </a>
 
       <nav className="hidden md:flex items-center gap-10">
         {[{label: 'Beds', href: '#beds'}, {label: 'Chairs & Tables', href: '#chairs'}, {label: 'TV Stands', href: '#tvstands'}, {label: 'Collection', href: '#collection'}, {label: 'Projects', href: '#projects'}, {label: 'Services', href: '#services'}, {label: 'Process', href: '#process'}, {label: 'Contact', href: '#contact'}].map((item) => (
