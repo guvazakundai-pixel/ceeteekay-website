@@ -12,7 +12,7 @@ export default function Header() {
       </div>
 
       <nav className="hidden md:flex items-center gap-10">
-        {[{label: 'Beds', href: '#beds'}, {label: 'Chairs & Tables', href: '#chairs'}, {label: 'Collection', href: '#collection'}, {label: 'Projects', href: '#projects'}, {label: 'Services', href: '#services'}, {label: 'Process', href: '#process'}, {label: 'Contact', href: '#contact'}].map((item) => (
+        {[{label: 'Beds', href: '#beds'}, {label: 'Chairs & Tables', href: '#chairs'}, {label: 'TV Stands', href: '#tvstands'}, {label: 'Collection', href: '#collection'}, {label: 'Projects', href: '#projects'}, {label: 'Services', href: '#services'}, {label: 'Process', href: '#process'}, {label: 'Contact', href: '#contact'}].map((item) => (
           <a
             key={item.label}
             href={item.href}

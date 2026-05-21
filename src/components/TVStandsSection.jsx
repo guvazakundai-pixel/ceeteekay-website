@@ -1,0 +1,239 @@
+import { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import FadeInOnScroll from './FadeInOnScroll';
+import { tvStands, tvStandCategories, tvStandCategoryMap } from '../data/tvstands';
+
+const easing = [0.25, 0.46, 0.45, 0.94];
+
+export default function TVStandsSection() {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [activeImage, setActiveImage] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  const groupedItems = useMemo(() => {
+    return tvStandCategories.map((cat) => ({
+      ...cat,
+      items: tvStands.filter((item) => tvStandCategoryMap[cat.key].includes(item.category)),
+    }));
+  }, []);
+
+  const displayCategories = activeCategory
+    ? groupedItems.filter((g) => g.key === activeCategory)
+    : groupedItems;
+
+  return (
+    <section id="tvstands" className="bg-white py-28 sm:py-36">
+      <div className="max-w-7xl mx-auto px-6">
+        <FadeInOnScroll>
+          <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-4 block">TV Stands & Media Furniture</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-light text-ctk-950 mb-5 leading-tight">
+            TV Stands
+          </h2>
+          <p className="text-base sm:text-lg text-ctk-500 font-light max-w-2xl leading-relaxed">
+            From floating wall consoles to sliding-door entertainment centres — every piece designed to anchor your living room with style and function.
+          </p>
+        </FadeInOnScroll>
+
+        <div className="flex flex-wrap gap-2 mt-10">
+          <button
+            onClick={() => setActiveCategory(null)}
+            className={`px-4 py-2 text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 border rounded-sm ${
+              activeCategory === null
+                ? 'bg-ctk-950 text-white border-ctk-950'
+                : 'bg-white text-ctk-500 border-ctk-200 hover:border-ctk-950 hover:text-ctk-950'
+            }`}
+          >
+            All
+          </button>
+          {tvStandCategories.map((cat) => (
+            <button
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
+              className={`px-4 py-2 text-[10px] tracking-[0.2em] uppercase font-medium transition-all duration-300 border rounded-sm ${
+                activeCategory === cat.key
+                  ? 'bg-ctk-950 text-white border-ctk-950'
+                  : 'bg-white text-ctk-500 border-ctk-200 hover:border-ctk-950 hover:text-ctk-950'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {displayCategories.map((group) => (
+          <div key={group.key} className="mt-16 sm:mt-20">
+            <FadeInOnScroll>
+              <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-3">
+                {group.label}
+              </h3>
+              <p className="text-sm text-ctk-500 font-light max-w-xl leading-relaxed mb-10">
+                {group.description}
+              </p>
+            </FadeInOnScroll>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {group.items.map((item, index) => (
+                <FadeInOnScroll key={item.id} delay={index * 50} threshold={0.05}>
+                  <div
+                    className="furniture-card group cursor-pointer"
+                    onClick={() => { setSelectedItem(item); setActiveImage(0); }}
+                  >
+                    <div className="relative h-72 sm:h-80 bg-ctk-100 rounded-sm overflow-hidden mb-5 shadow-sm card-media-landscape">
+                      <img
+                        src={item.images[0]}
+                        alt={item.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      {item.images.length > 1 && (
+                        <div className="absolute bottom-3 right-3 flex gap-1">
+                          {item.images.slice(0, 3).map((_, i) => (
+                            <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/80" />
+                          ))}
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                    </div>
+                    <p className="text-[10px] text-ctk-400 uppercase tracking-[0.25em] mb-2 font-medium">{item.category}</p>
+                    <h3 className="text-xl sm:text-2xl font-serif font-light text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
+                      {item.name}
+                    </h3>
+                    <p className="text-sm text-ctk-500 font-light leading-relaxed mb-3">{item.colour}</p>
+                    <p className="text-2xl sm:text-3xl font-serif font-light text-ctk-950">${item.price.toLocaleString()}</p>
+                  </div>
+                </FadeInOnScroll>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <AnimatePresence>
+        {selectedItem && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setSelectedItem(null)}
+            />
+            <motion.div
+              className="relative bg-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl z-10"
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={{ duration: 0.4, ease: easing }}
+            >
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-white rounded-full transition-colors duration-300"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4L12 12M12 4L4 12" strokeLinecap="round"/></svg>
+              </button>
+
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="bg-ctk-50">
+                  <div className="relative h-80 sm:h-96 md:h-[500px]">
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={activeImage}
+                        src={selectedItem.images[activeImage]}
+                        alt={selectedItem.name}
+                        className="w-full h-full object-cover"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </AnimatePresence>
+                    {selectedItem.images.length > 1 && (
+                      <>
+                        {activeImage > 0 && (
+                          <button
+                            onClick={() => setActiveImage(prev => prev - 1)}
+                            className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white/80 hover:bg-white rounded-full transition-colors duration-300"
+                          >
+                            <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 4L6 10L12 16" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                          </button>
+                        )}
+                        {activeImage < selectedItem.images.length - 1 && (
+                          <button
+                            onClick={() => setActiveImage(prev => prev + 1)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white/80 hover:bg-white rounded-full transition-colors duration-300"
+                          >
+                            <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M8 4L14 10L8 16" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </div>
+                  {selectedItem.images.length > 1 && (
+                    <div className="flex gap-2 p-4 justify-center">
+                      {selectedItem.images.map((img, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setActiveImage(i)}
+                          className={`w-16 h-16 rounded-sm overflow-hidden border-2 transition-all duration-300 ${i === activeImage ? 'border-ctk-950' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                        >
+                          <img src={img} alt="" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-6 sm:p-8 md:p-10 flex flex-col">
+                  <span className="text-[10px] tracking-[0.3em] text-ctk-400 uppercase font-medium mb-3">{selectedItem.category}</span>
+                  <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-2">{selectedItem.name}</h3>
+                  <p className="text-3xl sm:text-4xl font-serif font-light text-ctk-950 mb-6">${selectedItem.price.toLocaleString()}</p>
+
+                  <div className="space-y-4 mb-8">
+                    <div className="flex justify-between py-2 border-b border-ctk-100">
+                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Dimensions</span>
+                      <span className="text-sm text-ctk-700 font-light">{selectedItem.dimensions}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-ctk-100">
+                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Material</span>
+                      <span className="text-sm text-ctk-700 font-light">{selectedItem.material}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-ctk-100">
+                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Frame</span>
+                      <span className="text-sm text-ctk-700 font-light">{selectedItem.frame}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-ctk-100">
+                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Storage</span>
+                      <span className="text-sm text-ctk-700 font-light">{selectedItem.seat}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-ctk-100">
+                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium">Colour</span>
+                      <span className="text-sm text-ctk-700 font-light">{selectedItem.colour}</span>
+                    </div>
+                    <div className="py-2">
+                      <span className="text-xs tracking-[0.15em] text-ctk-400 uppercase font-medium block mb-2">Features</span>
+                      <p className="text-sm text-ctk-700 font-light">{selectedItem.features}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto">
+                    <motion.button
+                      className="w-full px-6 py-3.5 bg-ctk-950 text-white text-xs tracking-[0.25em] font-medium hover:bg-ctk-800 transition-colors duration-300"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      INQUIRE ABOUT THIS PIECE
+                    </motion.button>
+                    <p className="text-[10px] text-ctk-400 text-center mt-3 tracking-wide">Free delivery within Harare &middot; 5-year frame warranty</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}

@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white text-[10px] uppercase tracking-[0.25em] font-medium mb-5">Collection</h4>
             <ul className="space-y-2.5 text-xs sm:text-sm font-light">
-              {['Lounge Suites', 'Accent Chairs', 'Ottoman Benches', 'Bedroom Furniture'].map((item) => (
+              {['Lounge Suites', 'Accent Chairs', 'TV Stands', 'Ottoman Benches', 'Bedroom Furniture'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-ctk-500 hover:text-white transition-colors duration-300">{item}</a>
                 </li>
