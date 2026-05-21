@@ -46,7 +46,7 @@ export default function Header() {
                 className={`px-4 py-2 text-[11px] tracking-[0.18em] uppercase font-medium transition-all duration-300 ${
                   scrolled
                     ? 'text-ctk-600 hover:text-ctk-950'
-                    : 'text-white/70 hover:text-white'
+                    : 'text-white/85 hover:text-white'
                 }`}
               >
                 {item.label}
@@ -88,7 +88,7 @@ export default function Header() {
               href={item.href}
               onClick={() => setMobileOpen(false)}
               className={`block py-3 text-sm tracking-[0.15em] uppercase font-medium transition-colors duration-300 border-b ${
-                scrolled ? 'text-ctk-700 hover:text-ctk-950 border-ctk-100' : 'text-white/70 hover:text-white border-white/10'
+                scrolled ? 'text-ctk-700 hover:text-ctk-950 border-ctk-100' : 'text-white/85 hover:text-white border-white/10'
               }`}
             >
               {item.label}

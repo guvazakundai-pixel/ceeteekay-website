@@ -22,15 +22,15 @@ export default function AboutStudio() {
             <div className="mt-8 flex gap-8">
               <div>
                 <p className="text-3xl font-serif font-bold text-white">12+</p>
-                <p className="text-xs text-white/60 font-light mt-1">Years Crafting</p>
+                <p className="text-xs text-white/85 font-light mt-1">Years Crafting</p>
               </div>
               <div>
                 <p className="text-3xl font-serif font-bold text-white">500+</p>
-                <p className="text-xs text-white/60 font-light mt-1">Pieces Delivered</p>
+                <p className="text-xs text-white/85 font-light mt-1">Pieces Delivered</p>
               </div>
               <div>
                 <p className="text-3xl font-serif font-bold text-white">100%</p>
-                <p className="text-xs text-white/60 font-light mt-1">Hand Finished</p>
+                <p className="text-xs text-white/85 font-light mt-1">Hand Finished</p>
               </div>
             </div>
           </FadeInOnScroll>

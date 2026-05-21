@@ -13,9 +13,9 @@ export default function BedsSection() {
     <section id="beds" className="bg-white py-28 sm:py-36">
       <div className="max-w-7xl mx-auto px-6">
         <FadeInOnScroll>
-          <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-bold mb-4 block">Living Room</span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-light text-ctk-950 mb-5 leading-tight">
-            Beds
+          <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-bold mb-4 block">Bedroom</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-ctk-950 mb-5 leading-tight">
+            Beds & Headboards
           </h2>
           <p className="text-base sm:text-lg text-ctk-500 font-light max-w-2xl leading-relaxed">
             From statement wingbacks to minimalist platforms — handcrafted beds designed for restful nights and beautiful mornings. Each piece anchors your bedroom with character and comfort.
@@ -33,7 +33,7 @@ export default function BedsSection() {
                   <img
                     src={bed.images[0]}
                     alt={bed.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
                   {bed.images.length > 1 && (
@@ -45,8 +45,8 @@ export default function BedsSection() {
                   )}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                 </div>
-                <p className="text-[10px] text-ctk-500 uppercase tracking-[0.25em] mb-2 font-bold">Bedroom Furniture</p>
-                <h3 className="text-xl sm:text-2xl font-serif font-light text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
+                <p className="text-[10px] text-ctk-500 uppercase tracking-[0.25em] mb-2 font-bold">Bedroom</p>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
                   {bed.name}
                 </h3>
                 <p className="text-sm text-ctk-700 font-normal leading-relaxed mb-3">{bed.size} &middot; {bed.material}</p>
@@ -136,9 +136,9 @@ export default function BedsSection() {
                 </div>
 
                 <div className="p-6 sm:p-8 md:p-10 flex flex-col">
-                  <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-semibold mb-3">Bedroom Furniture</span>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-2">{selectedBed.name}</h3>
-                  <p className="text-3xl sm:text-4xl font-serif font-light text-ctk-950 mb-6">${selectedBed.price.toLocaleString()}</p>
+                  <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-semibold mb-3">Bedroom</span>
+                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-ctk-950 mb-2">{selectedBed.name}</h3>
+                  <p className="text-3xl sm:text-4xl font-serif font-bold text-ctk-950 mb-6">${selectedBed.price.toLocaleString()}</p>
 
                   <div className="space-y-4 mb-8">
                     <div className="flex justify-between py-2 border-b border-ctk-100">

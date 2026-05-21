@@ -22,11 +22,12 @@
 
 * {
   -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 html {
   scroll-behavior: smooth;
-  will-change: scroll-position;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   background-color: var(--color-ctk-950);
@@ -47,22 +48,23 @@ body {
   line-height: 1.75;
 }
 
-/* Premium typography fixes */
+/* === TYPOGRAPHY HIERARCHY === */
 h1, h2, h3 {
   letter-spacing: -0.02em;
+  will-change: transform;
 }
 
+/* Dark sections: bright white headings */
 .bg-ctk-950 h2, .bg-ctk-900 h2, .bg-ctk-950 h3, .bg-ctk-900 h3 {
   color: #FFFFFF !important;
   font-weight: 700 !important;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
 
 .bg-ctk-950 p, .bg-ctk-900 p {
   color: rgba(255, 255, 255, 0.88) !important;
-  text-shadow: 0 1px 10px rgba(0,0,0,0.4);
 }
 
+/* White sections: crisp dark headings */
 .bg-white h2, .bg-ctk-50 h2 {
   color: #0a0a0a !important;
   font-weight: 700 !important;
@@ -72,88 +74,42 @@ h1, h2, h3 {
   color: rgba(10, 10, 10, 0.82) !important;
 }
 
-.white-section-label {
-  color: rgba(10, 10, 10, 0.55);
-}
-
+/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--color-ctk-300); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-ctk-500); }
 
-.glass {
-  background: rgba(13, 13, 13, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.text-balance {
-  text-wrap: balance;
-}
-
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.nav-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-.carousel-viewport {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: transparent;
-}
-
-.carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 1;
-  will-change: opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-.carousel-slide.entering {
-  opacity: 1;
-  z-index: 2;
-  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.carousel-slide.exiting {
-  opacity: 0;
-  z-index: 3;
-  transition: opacity 1.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
+/* === STABLE FURNITURE CARDS === */
 .furniture-card {
   width: 100%;
   background: transparent;
   overflow: hidden;
-  transform: translateZ(0);
+}
+
+.furniture-card img {
+  transition: transform 0.5s ease-out;
+  will-change: transform;
   backface-visibility: hidden;
 }
 
+.furniture-card:hover img {
+  transform: scale(1.03);
+}
+
+/* No aggressive overlay flash */
+.furniture-card .absolute {
+  transition: background-color 0.3s ease;
+}
+
+/* === MODAL OVERLAYS === */
+/* Dark overlays for text readability on images */
+.bg-ctk-50 .relative .absolute.inset-0,
+.bg-white .relative .absolute.inset-0 {
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.08));
+}
+
+/* === CARD MEDIA === */
 .card-media-square {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -162,147 +118,35 @@ h1, h2, h3 {
 
 .card-media-landscape {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
 }
 
-.showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  padding: 20px;
+/* === ANIMATION STABILITY === */
+/* Prevent flicker: disable will-change on scroll, use transform only */
+.fade-in-section {
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.slider-viewport {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 21 / 9;
-  background: #111;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-  transform: translateZ(0);
+/* === TEXT SHADOW FOR HERO OVERLAYS === */
+.hero-text-shadow {
+  text-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4);
 }
 
-.slider-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
+.hero-subtitle-shadow {
+  text-shadow: 0 1px 12px rgba(0,0,0,0.5);
 }
 
-.slider-container::-webkit-scrollbar {
-  display: none;
-}
-
-.slide-item {
-  flex: 0 0 100%;
-  width: 100%;
-  height: 100%;
-  scroll-snap-align: start;
-  position: relative;
-}
-
-.slide-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
-
-.slide-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 40px;
-  z-index: 5;
-}
-
-.slide-category {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: var(--brand-orange);
-  margin-bottom: 6px;
-}
-
-.slide-title {
-  font-size: 2rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-  color: white;
-}
-
-.tracker-wrapper {
-  width: 100%;
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.tracker-bg-line {
-  width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-
-.tracker-fill-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: linear-gradient(90deg, var(--brand-blue), var(--brand-orange));
-  border-radius: 2px;
-  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.tracker-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--color-ctk-400);
-}
-
-.tracker-counter span {
-  color: white;
-}
-
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
-  .slider-viewport {
-    aspect-ratio: 1 / 1;
-  }
-  .slide-overlay {
-    padding: 20px;
-  }
-  .slide-title {
-    font-size: 1.3rem;
+  .card-media-landscape {
+    aspect-ratio: 3 / 4;
   }
 }
 
 @media (max-width: 480px) {
-  .showcase-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 12px;
+  .card-media-landscape {
+    aspect-ratio: 1 / 1;
   }
 }
 
@@ -314,5 +158,8 @@ h1, h2, h3 {
   }
   html {
     scroll-behavior: auto;
+  }
+  .furniture-card img {
+    transition: none !important;
   }
 }

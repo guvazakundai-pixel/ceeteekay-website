@@ -34,7 +34,7 @@ export default function ChairsTablesSection() {
       <div className="max-w-7xl mx-auto px-6">
         <FadeInOnScroll>
           <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-bold mb-4 block">Dining</span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-light text-ctk-950 mb-5 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-ctk-950 mb-5 leading-tight">
             Chairs & Tables
           </h2>
           <p className="text-base sm:text-lg text-ctk-500 font-light max-w-2xl leading-relaxed">
@@ -71,7 +71,7 @@ export default function ChairsTablesSection() {
         {displayCategories.map((group) => (
           <div key={group.key} className="mt-16 sm:mt-20">
             <FadeInOnScroll>
-              <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-3">
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-ctk-950 mb-3">
                 {group.label}
               </h3>
               <p className="text-sm text-ctk-700 font-normal max-w-xl leading-relaxed mb-10">
@@ -90,7 +90,7 @@ export default function ChairsTablesSection() {
                       <img
                         src={item.images[0]}
                         alt={item.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                         loading="lazy"
                       />
                       {item.images.length > 1 && (
@@ -103,7 +103,7 @@ export default function ChairsTablesSection() {
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                     </div>
                     <p className="text-[10px] text-ctk-500 uppercase tracking-[0.25em] mb-2 font-bold">{item.category}</p>
-                    <h3 className="text-xl sm:text-2xl font-serif font-light text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
+                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-ctk-950 mb-1.5 group-hover:text-ctk-600 transition-colors duration-300">
                       {item.name}
                     </h3>
                     <p className="text-sm text-ctk-700 font-normal leading-relaxed mb-3">{item.colour}</p>
@@ -196,8 +196,8 @@ export default function ChairsTablesSection() {
 
                 <div className="p-6 sm:p-8 md:p-10 flex flex-col">
                   <span className="text-[10px] tracking-[0.3em] text-ctk-500 uppercase font-semibold mb-3">{selectedItem.category}</span>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-light text-ctk-950 mb-2">{selectedItem.name}</h3>
-                  <p className="text-3xl sm:text-4xl font-serif font-light text-ctk-950 mb-6">${selectedItem.price.toLocaleString()}</p>
+                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-ctk-950 mb-2">{selectedItem.name}</h3>
+                  <p className="text-3xl sm:text-4xl font-serif font-bold text-ctk-950 mb-6">${selectedItem.price.toLocaleString()}</p>
 
                   <div className="space-y-4 mb-8">
                     <div className="flex justify-between py-2 border-b border-ctk-100">

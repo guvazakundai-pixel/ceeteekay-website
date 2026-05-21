@@ -23,10 +23,10 @@ export default function FadeInOnScroll({ children, className = '', threshold = 0
   return (
     <div
       ref={domRef}
-      className={`transition-all duration-700 ease-out will-change-transform ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      className={`transition-opacity duration-500 ease-out ${
+        isVisible ? 'opacity-100' : 'opacity-0'
       } ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: `${delay}ms`, backfaceVisibility: 'hidden' }}
     >
       {children}
     </div>
