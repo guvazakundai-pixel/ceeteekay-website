@@ -12,13 +12,13 @@ export default function Header() {
       </div>
 
       <nav className="hidden md:flex items-center gap-10">
-        {['Beds', 'Collection', 'Projects', 'Services', 'Process', 'Contact'].map((item) => (
+        {[{label: 'Beds', href: '#beds'}, {label: 'Chairs & Tables', href: '#chairs'}, {label: 'Collection', href: '#collection'}, {label: 'Projects', href: '#projects'}, {label: 'Services', href: '#services'}, {label: 'Process', href: '#process'}, {label: 'Contact', href: '#contact'}].map((item) => (
           <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
+            key={item.label}
+            href={item.href}
             className="nav-link text-xs tracking-[0.2em] font-semibold text-white/70 hover:text-white transition-colors duration-300 uppercase"
           >
-            {item}
+            {item.label}
           </a>
         ))}
         <button className="px-5 py-2.5 bg-brand-orange text-white text-xs tracking-[0.2em] font-bold rounded-sm hover:opacity-90 transition-all duration-300 uppercase">
