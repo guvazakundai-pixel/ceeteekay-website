@@ -3,7 +3,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 glass border-b border-white/10 px-6 py-4 flex justify-between items-center">
       <a href="#" className="flex items-center gap-2">
-        <img src="/ctk-logo-transparent.png" alt="CeeTeeKay Interiors" className="h-8 md:h-10 w-auto object-contain" />
+        <img src="/ctk-logo-transparent.png" alt="CeeTeeKay Interiors" className="h-12 md:h-16 w-auto object-contain" />
       </a>
 
       <nav className="hidden md:flex items-center gap-10">
